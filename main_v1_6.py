@@ -48,7 +48,8 @@ while loop:
 
         for i in range (len(texteAfficher)):
             for j in range(len(texteAfficher[i])):
-                fenetre.blit((FONT.render(texteAfficher[i][j]+" ", 1, BLACK)), (TEXT_POS[0]+sumSize(texteAfficher[i][0:j])[0], TEXT_POS[1]+i*20))
+                fenetre.blit((FONT.render(texteAfficher[i][j]+" ", 1, BLACK)), (TEXT_POS[0]+sumSize(texteAfficher[i][0:j])[0]+j*8, TEXT_POS[1]+i*20))
+                # j*8 : pour avoir des espaces
         # fenetre.blit(textSurface, TEXT_POS)
 
     fenetre.blit(dawn.sprite, (dawn.pos[0]*16+PKMN_CENTER_OFFSET[0]-8,
