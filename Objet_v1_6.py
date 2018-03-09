@@ -1,4 +1,3 @@
-import pygame
 from Constants import *
 
 
@@ -10,6 +9,7 @@ class Objet:
         - animation / plusieurs sprites
         - convertir la pathlist une seule fois et la stocker dans une liste ?
     """
+
     def __init__(self, spritePath=None, pos=ORIGIN_POS, size=None, transparentColor=None):
 
         self.sprite = pygame.image.load(DEFAULT_SPRITE)
@@ -28,6 +28,9 @@ class Objet:
 
     def get_rekt(self):
         print("Rectangle in ur face !")
+
+    def afficher(self):
+        fenetre.blit(self.sprite, (self.pos[0]*16, self.pos[1]*16))
 
 
 class ObjetQuiBouge(Objet):     # herite de Objet
@@ -104,6 +107,7 @@ class Personnage(ObjetQuiBouge):
 
     def __init__(self, sprite=None, pathList=None, pos=ORIGIN_POS, size=None, transparentColor=None):
         ObjetQuiBouge.__init__(self, sprite, pathList, pos, size, transparentColor)
+
 
 
 class ObjetQuiTourne(Objet):
