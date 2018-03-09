@@ -1,5 +1,3 @@
-import pygame
-from pygame.locals import *
 from Constants import *
 from random import randint
 
