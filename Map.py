@@ -1,13 +1,11 @@
-import pygame
 from Constants import *
 
-fenetre = pygame.display.set_mode(WINDOW_SIZE)
 
 class Map:
 
     # gérer music = None
 
-    def __init__(self, bgPath, musicPath=None, cells=None):
+    def __init__(self, bgPath, musicPath=None, cells=None, interactions=None):
         self.fond = pygame.image.load(bgPath).convert()
 
         """
