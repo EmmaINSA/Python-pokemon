@@ -3,13 +3,18 @@ import pygame
 
 pygame.init()
 
+WINDOW_SIZE = (256,192)
+fenetre = pygame.display.set_mode(WINDOW_SIZE)  # devrait pas être là
+
+
 LUCUS_BGCOLOR = (4,254,4)
 DAWN_BGCOLOR = (136,184,176)
-JOELLE_POS = (119,44)
+JOELLE_POS = (119-(119%8),44-(44%8))        # a refaire avec cases
+JOELLE_PATHLIST = ["Files/Joelle/Joelle_left.png","Files/Joelle/Joelle_back.png",
+                   "Files/Joelle/Joelle_right.png","Files/Joelle/Joelle_front.png"]
 ORIGIN_POS = (0,0)
-PLAYER_ORIGIN = (112, 100)
+# PLAYER_ORIGIN = (112, 100)
 MVT_UNIT = 8
-WINDOW_SIZE = (256,192)
 LEFT = 0
 UP = 1
 RIGHT = 2
