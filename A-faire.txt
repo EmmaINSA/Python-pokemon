@@ -1,0 +1,9 @@
+A faire
+
+  - diagramme de classe UML -> réécrire classes et liaisons correctement
+  - animations déplacement
+  - interactions décor
+  - chargement map
+  - menu
+  - saves
+  - combats -> cf Yann
