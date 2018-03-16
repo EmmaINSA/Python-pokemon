@@ -22,7 +22,7 @@ def formatText(textStr):
             result.append([splittext[i]])
             # ajouter nouveau tableau
             # mettre le premier mot qui dépasse dedans
-            long = 0
+            long = FONT.size(splittext[i])[0]       # ça marche mieux comme ça
             line_iterator += 1
         else:
             result[line_iterator].append(splittext[i])
