@@ -1,5 +1,3 @@
-import pygame
-from pygame.locals import *
 from Constants import *
 from random import randint
 
@@ -24,7 +22,7 @@ def formatText(textStr):
             result.append([splittext[i]])
             # ajouter nouveau tableau
             # mettre le premier mot qui dépasse dedans
-            long = 0
+            long = FONT.size(splittext[i])[0]       # ça marche mieux comme ça
             line_iterator += 1
         else:
             result[line_iterator].append(splittext[i])
@@ -65,8 +63,10 @@ def fortyTwo():
 
 def randomYTP():
     quotes = ["Un boeuf !","Une fraise !","Mon petit, cette paix est ce pourquoi luttent tous les vrais guerriers.",
-              "Inimaginable !", "Oooooh !", "Un énorrrme râteau", "Tout à coup ya un tas de sel", "Oskour oskour !",
+              "Inimaginable !", "Oooooh !", "Un énorrrme râteau", "Tout à coup ya un tas de sel",
+              "Oskour oskour ! J'ai mon bébé qui s'étouffe !",
               "Ils sont dans les villes, dans les campagnes !", "NON", "Pleeeein de spaghettis !",
               "La boule magique ! La boule de lavage, avec vos vêtements !", "Seul Link peut vaincre Ganon...",
-              "Nieuheuheuheuh !", "C'est Boswer qui nous écrit !", "Squalala !", "N'est-ce pas ??"]
+              "Nieuheuheuheuh !", "C'est Boswer qui nous écrit !", "Squalala !", "N'est-ce pas ??",
+              "Je vais appliquer des 'Calmez-vous !'"]
     return quotes[randint(0, len(quotes)-1)]
