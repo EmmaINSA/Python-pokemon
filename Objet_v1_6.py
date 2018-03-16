@@ -1,4 +1,3 @@
-import pygame
 from Constants import *
 
 
@@ -10,6 +9,7 @@ class Objet:
         - animation / plusieurs sprites
         - convertir la pathlist une seule fois et la stocker dans une liste ?
     """
+
     def __init__(self, spritePath=None, pos=ORIGIN_POS, size=None, transparentColor=None):
 
         self.sprite = pygame.image.load(DEFAULT_SPRITE)
@@ -29,18 +29,28 @@ class Objet:
     def get_rekt(self):
         print("Rectangle in ur face !")
 
+    def afficher(self):
+        fenetre.blit(self.sprite, (self.pos[0]*16, self.pos[1]*16))
 
-class ObjetQuiBouge(Objet):     # herite de Objet
+
+
+class ObjetQuiTourne(Objet):
+
+    def __init__(self, spriteList, pos=ORIGIN_POS, transparentColor=None):
+        Objet.__init__(self,spritePath=None, pos=pos, size=None, transparentColor=transparentColor)
+        self.direction = DOWN
+
+
+class ObjetQuiBouge(ObjetQuiTourne):     # herite de Objet
 
     def __init__(self, sprite=None, pathList=None, pos=ORIGIN_POS, size=None, transparentColor=None):
 
-        Objet.__init__(self, spritePath=sprite, pos=pos, transparentColor=transparentColor)
+        ObjetQuiTourne.__init__(self, spriteList=sprite, pos=pos, transparentColor=transparentColor)
         self.state = "still"    # useless for now
-        self.direction = DOWN
+        # self.direction = DOWN
         self.pathList = pathList
         self.canmove = True
 
-        # self.sprite = pygame.image.load("Files/Poukebol.png")
 
         if pathList is not None:
             self.sprite = pygame.image.load(pathList[3]).convert_alpha()      # sprite de base = vers le bas
@@ -106,7 +116,3 @@ class Personnage(ObjetQuiBouge):
         ObjetQuiBouge.__init__(self, sprite, pathList, pos, size, transparentColor)
 
 
-class ObjetQuiTourne(Objet):
-
-    def __init__(self, spriteList, pos=ORIGIN_POS, transparentColor=None):
-        Objet.__init__(self,spritePath=None, pos=pos, size=None, transparentColor=transparentColor)
