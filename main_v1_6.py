@@ -1,6 +1,6 @@
-
 from Variables import *
 from Fonctions import *
+from TexteDialogue import *
 
 
 pygame.init()
@@ -15,6 +15,7 @@ textToggle = False
 # map.playMusic()
 cells = PKMN_CENTER_CELLS_V2
 
+texttest = TexteDialogue(LOREM_IPSUM)
 
 textboxToggle = False
 textbox = Objet("Files/textbox_1.png", TEXTBOX_POS)
@@ -40,13 +41,17 @@ while loop:
     if textboxToggle:
         fenetre.blit(textbox.sprite, textbox.pos)
     if textToggle:
-        texteAfficher = formatText(LOREM_IPSUM)
 
+        # le petit test qui met bien (/!\ ça scroll vite)
+        print(texttest.formatedText)
 
-        for i in range (len(texteAfficher)):
-            for j in range(len(texteAfficher[i])):
-                fenetre.blit((FONT.render(texteAfficher[i][j]+" ", 1, BLACK)), (TEXT_POS[0]+sumSize(texteAfficher[i][0:j])[0]+j*5, TEXT_POS[1]+i*20))
-                # fenetre.blit(textSurface, TEXT_POS)
+        # texteAfficher = formatText(LOREM_IPSUM)
+        #
+        # for i in range (len(texteAfficher)):
+        #     for j in range(len(texteAfficher[i])):
+        #         # gérer les espaces dans la fonction formatText() !!
+        #         fenetre.blit((FONT.render(texteAfficher[i][j]+" ", 1, BLACK)), (TEXT_POS[0]+sumSize(texteAfficher[i][0:j])[0]+j*5, TEXT_POS[1]+i*20))
+        #         # fenetre.blit(textSurface, TEXT_POS)
 
     fenetre.blit(dawn.sprite, (dawn.pos[0]*16+PKMN_CENTER_OFFSET[0]-8,
                                (dawn.pos[1]-1)*16+PKMN_CENTER_OFFSET[1])) # dernier blit = le + devant
