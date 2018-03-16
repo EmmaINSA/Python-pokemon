@@ -8,35 +8,47 @@ def loadMap():
 
 def formatText(textStr):
 
-    # formated = pygame.Surface()
-
     splittext = textStr.split(" ")
-    result = [[splittext[0]]]       # découper encore
+    # ajouter un espace à la fin de chaque mot ?
+    result = [[[splittext[0]]]]
     long = FONT.size(splittext[0])[0]
-    line_iterator = 0
+    line = 0
 
     for i in range (1, len(splittext)):
         long += FONT.size(splittext[i])[0]
 
         if long > MAX_TEXT_SIZE[0]:
-            result.append([splittext[i]])
-            # ajouter nouveau tableau
-            # mettre le premier mot qui dépasse dedans
-            long = FONT.size(splittext[i])[0]       # ça marche mieux comme ça
-            line_iterator += 1
+            if line%2:  # si numero ligne est impair (dernière ligne du bloc) -> on change de bloc
+                result.append([[splittext[i]]])
+            else:
+                result[line//2].append([splittext[i]])
+
+            long = FONT.size(splittext[i])[0]   # reset la taille
+
         else:
-            result[line_iterator].append(splittext[i])
+            result[line//2][line%2].append(splittext[i])
 
-    result[line_iterator].append(splittext[i])
-
-
-    # size = FONT.size(textStr)       # taille nécessaire en px pour afficher le texte donné
-    # # dans la font sur laquelle on applique size
+    # splittext = textStr.split(" ")
+    # result = [[splittext[0]]]       # découper encore
+    # long = FONT.size(splittext[0])[0]
+    # line_iterator = 0
     #
-    # final_text = [[splittext[0]]]
+    # for i in range (1, len(splittext)):
+    #     long += FONT.size(splittext[i])[0]
+    #
+    #     if long > MAX_TEXT_SIZE[0]:
+    #         result.append([splittext[i]])
+    #         # ajouter nouveau tableau
+    #         # mettre le premier mot qui dépasse dedans
+    #         long = FONT.size(splittext[i])[0]       # ça marche mieux comme ça
+    #         line_iterator += 1
+    #     else:
+    #         result[line_iterator].append(splittext[i])
+    #
+    # result[line_iterator].append(splittext[i])
 
-    # return size
     return result
+
 
 def sumSize(str_list):
     size = (0,0)
