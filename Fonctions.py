@@ -1,5 +1,3 @@
-import pygame
-from pygame.locals import *
 from Constants import *
 from random import randint
 
@@ -65,8 +63,10 @@ def fortyTwo():
 
 def randomYTP():
     quotes = ["Un boeuf !","Une fraise !","Mon petit, cette paix est ce pourquoi luttent tous les vrais guerriers.",
-              "Inimaginable !", "Oooooh !", "Un énorrrme râteau", "Tout à coup ya un tas de sel", "Oskour oskour !",
+              "Inimaginable !", "Oooooh !", "Un énorrrme râteau", "Tout à coup ya un tas de sel",
+              "Oskour oskour ! J'ai mon bébé qui s'étouffe !",
               "Ils sont dans les villes, dans les campagnes !", "NON", "Pleeeein de spaghettis !",
               "La boule magique ! La boule de lavage, avec vos vêtements !", "Seul Link peut vaincre Ganon...",
-              "Nieuheuheuheuh !", "C'est Boswer qui nous écrit !", "Squalala !", "N'est-ce pas ??"]
+              "Nieuheuheuheuh !", "C'est Boswer qui nous écrit !", "Squalala !", "N'est-ce pas ??",
+              "Je vais appliquer des 'Calmez-vous !'"]
     return quotes[randint(0, len(quotes)-1)]
