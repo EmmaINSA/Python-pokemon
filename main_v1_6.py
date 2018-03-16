@@ -1,8 +1,4 @@
-import pygame
-from pygame.locals import *
-from Objet_v1_6 import *
-from Constants import *
-from Map import *
+
 from Variables import *
 from Fonctions import *
 
@@ -15,8 +11,6 @@ fenetre = pygame.display.set_mode(WINDOW_SIZE, RESIZABLE)
 
 textSurface = FONT.render(LOREM_IPSUM, 1, BLACK)
 textToggle = False
-
-pkmn_center_2.fond.blit(joelle.sprite, JOELLE_POS)      # on colle joelle sur le fond
 
 # map.playMusic()
 cells = PKMN_CENTER_CELLS_V2
@@ -40,6 +34,9 @@ while loop:
     fenetre.blit(pkmn_center_2.fond, ORIGIN_POS)   # pas blit dawn sur bg sinon superposition
     # /!\ l'offset de la map
 
+    # joelle.afficher()
+    fenetre.blit(joelle.sprite, JOELLE_POS)
+
     if textboxToggle:
         fenetre.blit(textbox.sprite, textbox.pos)
     if textToggle:
@@ -48,12 +45,14 @@ while loop:
 
         for i in range (len(texteAfficher)):
             for j in range(len(texteAfficher[i])):
-                fenetre.blit((FONT.render(texteAfficher[i][j]+" ", 1, BLACK)), (TEXT_POS[0]+sumSize(texteAfficher[i][0:j])[0]+j*8, TEXT_POS[1]+i*20))
-                # j*8 : pour avoir des espaces
-        # fenetre.blit(textSurface, TEXT_POS)
+                fenetre.blit((FONT.render(texteAfficher[i][j]+" ", 1, BLACK)), (TEXT_POS[0]+sumSize(texteAfficher[i][0:j])[0]+j*5, TEXT_POS[1]+i*20))
+                # fenetre.blit(textSurface, TEXT_POS)
 
     fenetre.blit(dawn.sprite, (dawn.pos[0]*16+PKMN_CENTER_OFFSET[0]-8,
                                (dawn.pos[1]-1)*16+PKMN_CENTER_OFFSET[1])) # dernier blit = le + devant
+
+    # dawn.afficher()
+
     pygame.display.flip()
 
     for event in pygame.event.get():
@@ -98,17 +97,3 @@ while loop:
                 if not textboxToggle:
                     textboxToggle = True
                     textToggle = True
-
-
-
-
-"""
-            try:
-                print('Position de Dawn : ', dawn.pos, '\nValeur de la case de la map : ',
-                      cells[dawn.pos[1]][dawn.pos[0]])
-                print('Valeurs des cases adjacentes (LURD) : ',
-                      cells[dawn.pos[1]][dawn.pos[0]-1],cells[dawn.pos[1]-1][dawn.pos[0]],  # il se passe des trucs étranges ici
-                      cells[dawn.pos[1]][dawn.pos[0]+1],cells[dawn.pos[1]+1][dawn.pos[0]])
-            except IndexError:
-                print('/!\ Out of bounds')
-"""
